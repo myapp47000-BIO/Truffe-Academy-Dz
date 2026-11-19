@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f2a1e">
+  <meta name="description" content="أكاديمية الكمأ: دورة علمية وتقنية في استزراع الكمأ والكمأ الصحراوي — الأنواع، شروط الزراعة، التقنيات التقليدية والمتطورة، قنوات متخصصة وتجارب ناجحة حول العالم.">
+  <meta name="keywords" content="الكمأ, استزراع الكمأ, زراعة الكمأ, الكمأ الصحراوي, الفقع, Terfezia, Tuber melanosporum, mycorrhiza, truffle cultivation, دورة configuring, زراعة">
+  <meta name="author" content="أكاديمية الكمأ">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="أكاديمية الكمأ">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="أكاديمية الكمأ">
+  <meta name="msapplication-TileColor" content="#0f2a1e">
+  <meta name="msapplication-TileImage" content="icons/icon-192.png">
+  <title>أكاديمية الكمأ | دورة علمية في استزراع الكمأ</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="grain"></div>
+
+  <!-- شريط علوي -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="brand-mark-shroom">🍄</span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">أكاديمية <span>الكمأ</span></div>
+          <div class="brand-sub">TRUFFLE ACADEMY · منصة تكوينية علمية</div>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="status-pill" id="statusPill" title="حالة الاتصال">
+          <span class="status-dot"></span>
+          <span id="statusText">متصل</span>
+        </div>
+        <button class="btn-install" id="installBtn" type="button" hidden>
+          <span>⬇️</span><span>تثبيت التطبيق</span>
+        </button>
+        <button class="icon-btn" id="searchToggle" type="button" title="بحث في المحتوى" aria-label="بحث">
+          🔍
+        </button>
+      </div>
+    </div>
+
+    <div class="search-bar" id="searchBar" hidden>
+      <span class="search-icon">🔍</span>
+      <input type="search" id="searchInput" placeholder="ابحث عن نوع، تقنية، أو شرط زراعة..." autocomplete="off" aria-label="البحث">
+      <button class="search-close" id="searchClose" type="button" aria-label="إغلاق">✕</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </header>
+
+  <!-- التنقل -->
+  <nav class="nav-wrap" aria-label="التنقل الرئيسي">
+    <div class="nav-tabs" id="navTabs"></div>
+  </nav>
+
+  <!-- المحتوى -->
+  <main class="main" id="main">
+    <section class="page active" id="page-home" data-page="home"></section>
+    <section class="page" id="page-course" data-page="course"></section>
+    <section class="page" id="page-species" data-page="species"></section>
+    <section class="page" id="page-conditions" data-page="conditions"></section>
+    <section class="page" id="page-techniques" data-page="techniques"></section>
+    <section class="page" id="page-desert" data-page="desert"></section>
+    <section class="page" id="page-algeria" data-page="algeria"></section>
+    <section class="page" id="page-channels" data-page="channels"></section>
+    <section class="page" id="page-stories" data-page="stories"></section>
+    <section class="page" id="page-sources" data-page="sources"></section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">🍄</span>
+        <div>
+          <strong>أكاديمية الكمأ</strong>
+          <p>معرفة علمية · تقنية تطبيقية · تنمية مستدامة</p>
+        </div>
+      </div>
+      <p class="footer-note">محتوى تعليمي استرشادي يُراجع قبل التطبيق الميداني. المعايير قد تختلف حسب المنطقة والتربة.</p>
+    </div>
+  </footer>
+
+  <!-- نافذة الدرس -->
+  <div class="modal" id="lessonModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="lessonModalTitle">
+      <button class="modal-close" type="button" data-close-modal aria-label="إغلاق">✕</button>
+      <div class="modal-body" id="lessonModalBody"></div>
+    </div>
+  </div>
+
+  <!-- نافذة البحث عن قناة -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
